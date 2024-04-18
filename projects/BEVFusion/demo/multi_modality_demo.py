@@ -1,5 +1,6 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 from argparse import ArgumentParser
+import time
 
 import mmcv
 
@@ -46,8 +47,37 @@ def main(args):
     visualizer.dataset_meta = model.dataset_meta
 
     # test a single image and point cloud sample
+    print(f"+++++++++++++", args.pcd, args.img, args.ann, args.cam_type)
+    time0 = time.time()
     result, data = inference_multi_modality_detector(model, args.pcd, args.img,
                                                      args.ann, args.cam_type)
+    time1 = time.time()
+    print(f"-----------time cost: {time1-time0:.2f}s")
+    
+    time0 = time.time()
+    result, data = inference_multi_modality_detector(model, args.pcd, args.img,
+                                                     args.ann, args.cam_type)
+    time1 = time.time()
+    print(f"-----------time cost: {time1-time0:.2f}s")
+    
+    time0 = time.time()
+    result, data = inference_multi_modality_detector(model, args.pcd, args.img,
+                                                     args.ann, args.cam_type)
+    time1 = time.time()
+    print(f"-----------time cost: {time1-time0:.2f}s")
+    
+    time0 = time.time()
+    result, data = inference_multi_modality_detector(model, args.pcd, args.img,
+                                                     args.ann, args.cam_type)
+    time1 = time.time()
+    print(f"-----------time cost: {time1-time0:.2f}s")
+    
+    time0 = time.time()
+    result, data = inference_multi_modality_detector(model, args.pcd, args.img,
+                                                     args.ann, args.cam_type)
+    time1 = time.time()
+    print(f"-----------time cost: {time1-time0:.2f}s")
+
     points = data['inputs']['points']
     if isinstance(result.img_path, list):
         img = []

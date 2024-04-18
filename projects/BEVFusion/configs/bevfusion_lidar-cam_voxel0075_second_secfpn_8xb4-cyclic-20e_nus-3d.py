@@ -145,7 +145,7 @@ test_pipeline = [
         backend_args=backend_args),
     dict(
         type='LoadPointsFromMultiSweeps',
-        sweeps_num=9,
+        sweeps_num=6,
         load_dim=5,
         use_dim=5,
         pad_empty_sweeps=True,

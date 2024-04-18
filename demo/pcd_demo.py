@@ -1,6 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import logging
 import os
+import time
 from argparse import ArgumentParser
 
 from mmengine.logging import print_log
@@ -77,7 +78,11 @@ def main():
     init_args, call_args = parse_args()
 
     inferencer = LidarDet3DInferencer(**init_args)
-    inferencer(**call_args)
+    for i in range(5):
+        time0 = time.time()
+        inferencer(**call_args)
+        time1 = time.time()
+        print(f"-----------time cost: {time1-time0:.2f}s")
 
     if call_args['out_dir'] != '' and not (call_args['no_save_vis']
                                            and call_args['no_save_pred']):

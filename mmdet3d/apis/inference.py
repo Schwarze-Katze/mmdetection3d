@@ -221,7 +221,6 @@ def inference_multi_modality_detector(model: nn.Module,
         pcds = [pcds]
         imgs = [imgs]
         is_batch = False
-
     cfg = model.cfg
 
     # build the data pipeline
@@ -289,7 +288,7 @@ def inference_multi_modality_detector(model: nn.Module,
     # forward the model
     with torch.no_grad():
         results = model.test_step(collate_data)
-
+    # print(results[0].pred_instances_3d['bboxes_3d'])
     if not is_batch:
         return results[0], data[0]
     else:
